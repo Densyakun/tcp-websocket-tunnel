@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const net = require('net')
 const WebSocket = require('ws')
 const program = require("commander")
