@@ -6,13 +6,13 @@ Simple tunneling server between TCP and WebSocket
 npm install -g tcp-websocket-tunnel
 ```
 
-open TCP 25565 to WebSocket 8080 server:
+listen on TCP server Port 25565, destination to ws://localhost:8080:
 
 ```bash
 tcp-websocket-tunnel --from 25565 --tows ws://localhost:8080
 ```
 
-open WebSocket to TCP server:
+listen on WebSocket server Port 8080, destination to TCP localhost:25565:
 
 ```bash
 tcp-websocket-tunnel --from 8080 --toport 25565 --tohost localhost
