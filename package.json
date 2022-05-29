@@ -1,0 +1,18 @@
+{
+  "name": "tcp-websocket-tunnel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tcp-websocket-tunnel.js",
+  "bin": "./tcp-websocket-tunnel.js",
+  "dependencies": {
+    "commander": "^9.3.0",
+    "net": "^1.0.2",
+    "ws": "^8.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Densyakun <densyakun1128@gmail.com> (https://densyakun.github.io/)",
+  "license": "MIT"
+}
