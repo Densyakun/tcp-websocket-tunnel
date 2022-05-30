@@ -1,9 +1,11 @@
 {
   "name": "tcp-websocket-tunnel",
   "version": "1.1.1",
-  "description": "",
+  "description": "Simple tunneling server between TCP and WebSocket",
   "main": "tcp-websocket-tunnel.js",
-  "bin": "./bin/tcp-websocket-tunnel.js",
+  "bin": {
+    "tcp-websocket-tunnel": "bin/tcp-websocket-tunnel.js"
+  },
   "dependencies": {
     "commander": "^9.3.0",
     "net": "^1.0.2",
@@ -19,5 +21,13 @@
     "websocket"
   ],
   "author": "Densyakun <densyakun1128@gmail.com> (https://densyakun.github.io/)",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Densyakun/tcp-websocket-tunnel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Densyakun/tcp-websocket-tunnel/issues"
+  },
+  "homepage": "https://github.com/Densyakun/tcp-websocket-tunnel#readme"
 }
