@@ -1,6 +1,8 @@
 const net = require('net')
 const WebSocket = require('ws')
 
+// サーバーなどを返し、停止できるようにする
+
 exports.toWebSocket = (fromPort, toAddr) => {
     const server = net.createServer(c => {
         const ws = new WebSocket(toAddr)
@@ -23,6 +25,8 @@ exports.toWebSocket = (fromPort, toAddr) => {
     server.listen(fromPort, () => {
         console.log(`TCP server listening on port ${fromPort}`)
     })
+
+    return server
 }
 
 exports.toTCP = (fromPort, toPort, toHost) => {
@@ -41,4 +45,6 @@ exports.toTCP = (fromPort, toPort, toHost) => {
     })
 
     console.log(`WebSocket server listening on port ${fromPort}`)
+
+    return wss
 }
