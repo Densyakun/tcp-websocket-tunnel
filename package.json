@@ -1,6 +1,6 @@
 {
   "name": "tcp-websocket-tunnel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "tcp-websocket-tunnel.js",
   "bin": "./bin/tcp-websocket-tunnel.js",
