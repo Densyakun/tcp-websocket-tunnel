@@ -32,21 +32,23 @@ exports.toWebSocket = (fromPort, toAddr) => {
 exports.toTCP = (fromPort, toPort, toHost) => {
   const wss = new WebSocket.WebSocketServer({ port: fromPort })
 
-  wss.on('connection', ws => {
-    const client = net.connect(toPort, toHost)
-
-    client.on('end', () => ws.close(1000))
-
-    client.on('error', () => ws.close(1000))
-
-    ws.on('close', () => client.destroy())
-
-    ws.on('error', () => client.destroy())
-
-    ws.on('message', data => client.write(data))
-
-    client.on('data', data => ws.send(data))
-  })
+  wss.on('connection', ws => this.toTCPOnConnection(ws, toPort, toHost))
 
   return wss
+}
+
+exports.toTCPOnConnection = (ws, toPort, toHost) => {
+  const client = net.connect(toPort, toHost)
+
+  client.on('end', () => ws.close(1000))
+
+  client.on('error', () => ws.close(1000))
+
+  ws.on('close', () => client.destroy())
+
+  ws.on('error', () => client.destroy())
+
+  ws.on('message', data => client.write(data))
+
+  client.on('data', data => ws.send(data))
 }

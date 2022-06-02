@@ -64,3 +64,40 @@ console.log('listening')
 
 wss.close()
 ```
+
+Node module (Use in express-ws):
+
+```js
+const express = require('express')
+const app = express()
+const expressWs = require('express-ws')(app)
+const { toTCPOnConnection } = require('tcp-websocket-tunnel')
+
+app.ws('/ws', (ws, req) => toTCPOnConnection(ws, 25565, 'localhost'))
+
+app.listen(process.env.PORT || 3000)
+```
+
+Node module (Use in @fastify/websocket):
+
+```js
+const fastify = require('fastify')()
+fastify.register(require('@fastify/websocket'))
+const { toTCPOnConnection } = require('tcp-websocket-tunnel')
+
+fastify.register(async (fastify) => {
+  fastify.get('/ws', { websocket: true }, (connection, req) => {
+    toTCPOnConnection(connection.socket, 25565, 'localhost')
+  })
+})
+
+const start = async () => {
+  try {
+    await fastify.listen(process.env.PORT || 3000, '0.0.0.0')
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+}
+start()
+```
