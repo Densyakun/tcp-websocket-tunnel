@@ -24,9 +24,7 @@ exports.toWebSocket = (fromPort, toAddr) => {
   server.on('error', (err) => {
     throw err
   })
-  server.listen(fromPort, () => {
-    console.log(`TCP server listening on port ${fromPort}`)
-  })
+  server.listen(fromPort)
 
   return server
 }
@@ -49,8 +47,6 @@ exports.toTCP = (fromPort, toPort, toHost) => {
 
     client.on('data', data => ws.send(data))
   })
-
-  console.log(`WebSocket server listening on port ${fromPort}`)
 
   return wss
 }

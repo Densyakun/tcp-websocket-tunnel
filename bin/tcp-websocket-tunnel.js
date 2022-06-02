@@ -13,6 +13,8 @@ const options = program.opts()
 
 if (options.from)
   if (options.tows)
-    toWebSocket(options.from, options.tows)
-  else if (options.toport)
+    toWebSocket(options.from, options.tows).on('listening', () => console.log(`TCP server listening on port ${options.from}`))
+  else if (options.toport) {
     toTCP(options.from, options.toport, options.tohost)
+    console.log(`WebSocket server listening on port ${options.from}`)
+  }
